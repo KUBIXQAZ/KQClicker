@@ -1,8 +1,10 @@
-﻿using System;
+﻿using KQClicker.Properties;
+using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace KQClicker
 {
@@ -27,13 +29,13 @@ namespace KQClicker
 
         //left mb clicker//
         public bool left_clicker_on = false;
-        public bool left_type_const = true;
-        public int left_ms;
+        public bool left_toggle_on = false;
+        public bool left_clicker_toggle = false;
 
         //left mb clicker//
         public bool right_clicker_on = false;
-        public bool right_type_const = true;
-        public int right_ms;
+        public bool right_toggle_on = false;
+        public bool right_clicker_toggle = false;
 
         public Form1()
         {
@@ -60,16 +62,17 @@ namespace KQClicker
             //changing button style//
             if(left_clicker_on == true)
             {
-                left_clicker_b.BackColor = Color.Green;
+                left_clicker_b.BackColor = Color.FromArgb(29, 143, 29);
                 left_clicker_b.Text = "ENABLED";
             } else
             {
-                left_clicker_b.BackColor = Color.Red;
+                left_clicker_b.BackColor = Color.FromArgb(140, 24, 24);
                 left_clicker_b.Text = "DISABLED";
             }
         }
-        
+
         //left clicker timer//
+        bool left_can = true;
         private void LeftClicker_Tick(object sender, EventArgs e)
         {
             if(left_clicker_on == true)
@@ -79,23 +82,37 @@ namespace KQClicker
                 {
                     if (GetForegroundWindow() == FindWindow(null, process.MainWindowTitle))
                     {
-                        if (MouseButtons == MouseButtons.Left)
+                        Key left_key = KeyInterop.KeyFromVirtualKey((int)left_bind_key);
+                        if(left_clicker_toggle == false)
                         {
-                            if (int.Parse(cps_input_left.Text) <= 0) cps_input_left.Text = "1";
-                            if (int.Parse(min_random_left.Text) >= int.Parse(max_random_left.Text)) max_random_left.Text = (int.Parse(min_random_left.Text) + 1).ToString();
-                            if (int.Parse(max_random_left.Text) > 100) max_random_left.Text = "100";
-                            if (left_type_const == false)
+                            if (Keyboard.IsKeyDown(left_key))
+                                if (MouseButtons == MouseButtons.Left) left_toggle_on = true;
+                            if (!(MouseButtons == MouseButtons.Left)) left_toggle_on = false;
+
+                            if (left_toggle_on == true)
                             {
-                                Random random = new Random();
-                                int random_cps = random.Next(int.Parse(min_random_left.Text), int.Parse(max_random_left.Text) + 1);
-                                left_ms = 1000 / random_cps;
+                                LeftClicker.Interval = 1000 / left_cps_trackBar.Value;
+                                mouse_event(0x0002, MousePosition.X, MousePosition.Y, 0, 0);
                             }
-                            else
+                        } else
+                        {
+                            
+                            if (Keyboard.IsKeyDown(left_key))
+                                if (MouseButtons == MouseButtons.Left)
+                                {
+                                    if (left_can == true)
+                                    {
+                                        left_toggle_on = !left_toggle_on;
+                                        left_can = false;
+                                    }
+                                }
+                            if (Keyboard.IsKeyUp(left_key)) left_can = true;
+
+                            if (left_toggle_on == true)
                             {
-                                left_ms = 1000 / int.Parse(cps_input_left.Text);
+                                LeftClicker.Interval = 1000 / left_cps_trackBar.Value;
+                                mouse_event(0x0002, MousePosition.X, MousePosition.Y, 0, 0);
                             }
-                            LeftClicker.Interval = left_ms;
-                            mouse_event(0x0002, MousePosition.X, MousePosition.Y, 0, 0);
                         }
                     }
                 }
@@ -111,17 +128,18 @@ namespace KQClicker
             //changing button style//
             if (right_clicker_on == true)
             {
-                right_clicker_b.BackColor = Color.Green;
+                right_clicker_b.BackColor = Color.FromArgb(29, 143, 29);
                 right_clicker_b.Text = "ENABLED";
             }
             else
             {
-                right_clicker_b.BackColor = Color.Red;
+                right_clicker_b.BackColor = Color.FromArgb(140, 24, 24);
                 right_clicker_b.Text = "DISABLED";
             }
         }
-        
+
         //right clicker timer//
+        bool right_can = true;
         private void RightClicker_Tick(object sender, EventArgs e)
         {
             //if right mb clicker is on//
@@ -135,42 +153,54 @@ namespace KQClicker
                     //if current window is minecraft (javaw process)//
                     if (GetForegroundWindow() == FindWindow(null, process.MainWindowTitle))
                     {
-                        //if right mb is clicked//
-                        if (MouseButtons == MouseButtons.Right)
+                        Key right_key = KeyInterop.KeyFromVirtualKey((int)right_bind_key);
+                        if(right_clicker_toggle == false)
                         {
-                            //max and min and cps inputs protection//
-                            if (int.Parse(cps_input_right.Text) <= 0) cps_input_right.Text = "1";
-                            if (int.Parse(min_random_right.Text) >= int.Parse(max_random_right.Text)) max_random_right.Text = (int.Parse(min_random_right.Text) + 1).ToString();
-                            if (int.Parse(max_random_right.Text) > 100) max_random_right.Text = "100";
-                            //calculating cps for clicker type//
-                            if (right_type_const == false)
+                            if (Keyboard.IsKeyDown(right_key))
+                                if (MouseButtons == MouseButtons.Right) right_toggle_on = true;
+                            if (!(MouseButtons == MouseButtons.Right)) right_toggle_on = false;
+
+                            if (right_toggle_on == true)
                             {
-                                //for random//
-                                Random random = new Random();
-                                int random_cps = random.Next(int.Parse(min_random_right.Text), int.Parse(max_random_right.Text) + 1);
-                                right_ms = 1000 / random_cps;
+                                //set interval//
+                                RightClicker.Interval = 1000 / right_cps_trackBar.Value;
+                                //start clicking//
+                                mouse_event(0x0008, MousePosition.X, MousePosition.Y, 0, 0);
                             }
-                            else
+                        } else
+                        {
+                            if (Keyboard.IsKeyDown(right_key))
+                                if (MouseButtons == MouseButtons.Right)
+                                {
+                                    if (right_can == true)
+                                    {
+                                        right_toggle_on = !right_toggle_on;
+                                        right_can = false;
+                                    }
+                                }
+                            if (Keyboard.IsKeyUp(right_key)) right_can = true;
+
+                            if (right_toggle_on == true)
                             {
-                                //for const//
-                                right_ms = 1000 / int.Parse(cps_input_right.Text);
+                                //set interval//
+                                RightClicker.Interval = 1000 / right_cps_trackBar.Value;
+                                //start clicking//
+                                mouse_event(0x0008, MousePosition.X, MousePosition.Y, 0, 0);
                             }
-                            //set interval//
-                            RightClicker.Interval = right_ms;
-                            //start clicking//
-                            mouse_event(0x0008, MousePosition.X, MousePosition.Y, 0, 0);
                         }
                     }
                 }
             }
         }
-        
+
         //on app load//
         private void Form1_Load(object sender, EventArgs e)
         {
+            loadData();
+
             //window bar//
             bar.BackColor = Color.FromArgb(37, 37, 37);
-            app_title.ForeColor = Color.FromArgb(255, 20, 20);
+            app_title.ForeColor = Color.FromArgb(140, 24, 24);
             exit_b.BackColor = Color.Red;
             minimize_b.BackColor = Color.Orange;
 
@@ -178,35 +208,27 @@ namespace KQClicker
             left_clicker_b.ForeColor = Color.FromArgb(24, 24, 24);
             left_clicker_b.BackColor = Color.Red;
             panel_left.BackColor = Color.FromArgb(24, 24, 24);
-            cps_input_left.BackColor = Color.FromArgb(24, 24, 24);
-            cps_input_left.ForeColor = Color.FromArgb(255, 20, 20);
-            min_random_left.BackColor = Color.FromArgb(24, 24, 24);
-            min_random_left.ForeColor = Color.FromArgb(255, 20, 20);
-            max_random_left.BackColor = Color.FromArgb(24, 24, 24);
-            max_random_left.ForeColor = Color.FromArgb(255, 20, 20);
-            cps_left.ForeColor = Color.FromArgb(255, 20, 20);
-            title_left.ForeColor = Color.FromArgb(255, 20, 20);
+            cps_left.ForeColor = Color.FromArgb(140, 24, 24);
+            title_left.ForeColor = Color.FromArgb(140, 24, 24);
             title_panel_left.BackColor = Color.FromArgb(33, 33, 33);
-            left_type.BackColor = Color.Red;
-            min_random_left.Enabled = false;
-            max_random_left.Enabled = false;
+            bind_left.ForeColor = Color.FromArgb(24, 24, 24);
+            left_clicker_b.BackColor = Color.FromArgb(140, 24, 24);
+            bind_left.BackColor = Color.FromArgb(29, 143, 29);
+            display_cps_left.ForeColor = Color.FromArgb(140, 24, 24);
+            left_toggle.BackColor = Color.FromArgb(140, 24, 24);
 
             //right mb clicker panel//
             right_clicker_b.ForeColor = Color.FromArgb(24, 24, 24);
             right_clicker_b.BackColor = Color.Red;
             panel_right.BackColor = Color.FromArgb(24, 24, 24);
-            cps_input_right.BackColor = Color.FromArgb(24, 24, 24);
-            cps_input_right.ForeColor = Color.FromArgb(255, 20, 20);
-            min_random_right.BackColor = Color.FromArgb(24, 24, 24);
-            min_random_right.ForeColor = Color.FromArgb(255, 20, 20);
-            max_random_right.BackColor = Color.FromArgb(24, 24, 24);
-            max_random_right.ForeColor = Color.FromArgb(255, 20, 20);
-            cps_right.ForeColor = Color.FromArgb(255, 20, 20);
-            title_right.ForeColor = Color.FromArgb(255, 20, 20);
+            cps_right.ForeColor = Color.FromArgb(140, 24, 24);
+            display_cps_right.ForeColor = Color.FromArgb(140, 24, 24);
+            title_right.ForeColor = Color.FromArgb(140, 24, 24);
             title_panel_right.BackColor = Color.FromArgb(33, 33, 33);
-            right_type.BackColor = Color.Red;
-            min_random_right.Enabled = false;
-            max_random_right.Enabled = false;
+            bind_right.ForeColor = Color.FromArgb(24, 24, 24);
+            right_clicker_b.BackColor = Color.FromArgb(140, 24, 24);
+            bind_right.BackColor = Color.FromArgb(29, 143, 29);
+            right_toggle.BackColor = Color.FromArgb(140, 24, 24);
 
             //app background//
             this.BackColor = Color.FromArgb(17, 17, 17);
@@ -232,95 +254,118 @@ namespace KQClicker
             this.WindowState = FormWindowState.Minimized;
         }
 
-        //type of left mb clicker const or random//
-        private void left_type_Click(object sender, EventArgs e)
+        //custom key bind//
+        Keys left_bind_key = Keys.R;
+        bool waiting_left_for_input = false;
+        private void bind_left_Click(object sender, EventArgs e)
         {
-            left_type_const = !left_type_const;
+            waiting_left_for_input = !waiting_left_for_input;
+            if(waiting_left_for_input == true) bind_left.BackColor = Color.FromArgb(140, 24, 24);
+            else bind_left.BackColor = Color.FromArgb(29, 143, 29);
+        }
 
-            if(left_type_const == true)
+        private void bind_left_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (waiting_left_for_input == true)
             {
-                left_type.Text = "CONST";
-                min_random_left.Enabled = false;
-                max_random_left.Enabled = false;
-                cps_input_left.Enabled = true;
-            } else
-            {
-                left_type.Text = "RANDOM";
-                min_random_left.Enabled = true;
-                max_random_left.Enabled = true;
-                cps_input_left.Enabled = false;
+                left_bind_key = e.KeyData;
+                Settings.Default.left_key_bind = left_bind_key.ToString();
+                Settings.Default.Save();
+                bind_left.Text = "BIND: " + left_bind_key.ToString() + "+LMB"; 
+                bind_left.BackColor = Color.FromArgb(29, 143, 29);
+                waiting_left_for_input = false;
             }
         }
 
-        //type of right mb clicker const or random//
-        private void right_type_Click(object sender, EventArgs e)
+        Keys right_bind_key = Keys.F;
+        bool waiting_right_for_input = false;
+        private void bind_right_Click(object sender, EventArgs e)
         {
-           right_type_const = !right_type_const;
+            waiting_right_for_input = !waiting_right_for_input;
+            if (waiting_right_for_input == true) bind_right.BackColor = Color.FromArgb(140, 24, 24);
+            else bind_right.BackColor = Color.FromArgb(29, 143, 29);
+        }
 
-            if (right_type_const == true)
+        private void bind_right_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (waiting_right_for_input == true)
             {
-                right_type.Text = "CONST";
-                min_random_right.Enabled = false;
-                max_random_right.Enabled = false;
-                cps_input_right.Enabled = true;
+                right_bind_key = e.KeyData;
+                Settings.Default.right_key_bind = right_bind_key.ToString();
+                Settings.Default.Save();
+                bind_right.Text = "BIND: " + right_bind_key.ToString() + "+LMB";
+                bind_right.BackColor = Color.FromArgb(29, 143, 29);
+                waiting_right_for_input = false;
+            }
+        }
+
+        public void loadData()
+        {
+            try
+            {
+                right_bind_key = (Keys)Enum.Parse(typeof(Keys), Settings.Default.right_key_bind);
+                bind_right.Text = "BIND: " + right_bind_key.ToString() + "+LMB";
+                left_bind_key = (Keys)Enum.Parse(typeof(Keys), Settings.Default.left_key_bind);
+                bind_left.Text = "BIND: " + left_bind_key.ToString() + "+LMB";
+
+                left_cps_trackBar.Value = Settings.Default.left_cps;
+                right_cps_trackBar.Value = Settings.Default.right_cps;
+                display_cps_left.Text = left_cps_trackBar.Value.ToString();
+                display_cps_right.Text = right_cps_trackBar.Value.ToString();
+
+                left_clicker_toggle = Settings.Default.left_toggle;
+                right_clicker_toggle = Settings.Default.right_toggle;
+                if (left_clicker_toggle == true) left_toggle.Text = "TOGGLE";
+                else left_toggle.Text = "HOLD";
+                if (right_clicker_toggle == true) right_toggle.Text = "TOGGLE";
+                else right_toggle.Text = "HOLD";
+            } catch(Exception ex)
+            {
+                return;
+            }
+
+        }
+
+        private void left_cps_trackBar_Scroll(object sender, EventArgs e)
+        {
+            display_cps_left.Text = left_cps_trackBar.Value.ToString();
+            Settings.Default.left_cps = left_cps_trackBar.Value;
+            Settings.Default.Save();
+        }
+
+        private void right_cps_trackBar_Scroll(object sender, EventArgs e)
+        {
+            display_cps_right.Text = right_cps_trackBar.Value.ToString();
+            Settings.Default.right_cps = right_cps_trackBar.Value;
+            Settings.Default.Save();
+        }
+
+        private void left_toggle_Click(object sender, EventArgs e)
+        {
+            left_clicker_toggle = !left_clicker_toggle;
+            Settings.Default.left_toggle = left_clicker_toggle;
+            Settings.Default.Save();
+            if (left_clicker_toggle == true)
+            {
+                left_toggle.Text = "TOGGLE";
+            } else
+            {
+                left_toggle.Text = "HOLD";
+            }
+        }
+
+        private void right_toggle_Click(object sender, EventArgs e)
+        {
+            right_clicker_toggle = !right_clicker_toggle;
+            Settings.Default.right_toggle = right_clicker_toggle;
+            Settings.Default.Save();
+            if (right_clicker_toggle == true)
+            {
+                right_toggle.Text = "TOGGLE";
             }
             else
             {
-                right_type.Text = "RANDOM";
-                min_random_right.Enabled = true;
-                max_random_right.Enabled = true;
-                cps_input_right.Enabled = false;
-            }
-        }
-
-        //cps input left mb clicker protection//
-        private void cps_input_left_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void cps_input_left_Leave(object sender, EventArgs e)
-        {
-            if (int.Parse(cps_input_left.Text) <= 0) cps_input_left.Text = "1";
-            if (int.Parse(cps_input_left.Text) > 100) cps_input_left.Text = "100";
-        }
-
-        //min random left mb clicker input protection//
-        private void min_random_left_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void min_random_left_Leave(object sender, EventArgs e)
-        {
-            if (int.Parse(min_random_left.Text) <= 0) cps_input_left.Text = "1";
-            if(int.Parse(min_random_left.Text) >= int.Parse(max_random_left.Text))
-            {
-                max_random_left.Text = (int.Parse(min_random_left.Text) + 1).ToString();
-            }
-        }
-
-        //max random left mb clicker input protection//
-        private void max_random_left_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void max_random_left_Leave(object sender, EventArgs e)
-        {
-            if (int.Parse(max_random_left.Text) > 100) max_random_left.Text = "100";
-            if (int.Parse(max_random_left.Text) <= int.Parse(min_random_left.Text))
-            {
-                max_random_left.Text = (int.Parse(min_random_left.Text) + 1).ToString();
+                right_toggle.Text = "HOLD";
             }
         }
     }

@@ -36,27 +36,29 @@
             this.minimize_b = new System.Windows.Forms.Button();
             this.exit_b = new System.Windows.Forms.Button();
             this.panel_left = new System.Windows.Forms.Panel();
-            this.max_random_left = new System.Windows.Forms.TextBox();
-            this.min_random_left = new System.Windows.Forms.TextBox();
-            this.left_type = new System.Windows.Forms.Button();
+            this.left_toggle = new System.Windows.Forms.Button();
+            this.display_cps_left = new System.Windows.Forms.Label();
+            this.cps_left = new System.Windows.Forms.Label();
+            this.bind_left = new System.Windows.Forms.Button();
             this.title_panel_left = new System.Windows.Forms.Panel();
             this.title_left = new System.Windows.Forms.Label();
-            this.cps_input_left = new System.Windows.Forms.TextBox();
-            this.cps_left = new System.Windows.Forms.Label();
+            this.left_cps_trackBar = new System.Windows.Forms.TrackBar();
             this.panel_right = new System.Windows.Forms.Panel();
-            this.max_random_right = new System.Windows.Forms.TextBox();
-            this.min_random_right = new System.Windows.Forms.TextBox();
-            this.right_type = new System.Windows.Forms.Button();
+            this.display_cps_right = new System.Windows.Forms.Label();
+            this.cps_right = new System.Windows.Forms.Label();
+            this.right_cps_trackBar = new System.Windows.Forms.TrackBar();
+            this.bind_right = new System.Windows.Forms.Button();
             this.title_panel_right = new System.Windows.Forms.Panel();
             this.title_right = new System.Windows.Forms.Label();
-            this.cps_input_right = new System.Windows.Forms.TextBox();
-            this.cps_right = new System.Windows.Forms.Label();
             this.right_clicker_b = new System.Windows.Forms.Button();
             this.RightClicker = new System.Windows.Forms.Timer(this.components);
+            this.right_toggle = new System.Windows.Forms.Button();
             this.bar.SuspendLayout();
             this.panel_left.SuspendLayout();
             this.title_panel_left.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.left_cps_trackBar)).BeginInit();
             this.panel_right.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.right_cps_trackBar)).BeginInit();
             this.title_panel_right.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,10 +68,11 @@
             this.left_clicker_b.FlatAppearance.BorderSize = 0;
             this.left_clicker_b.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.left_clicker_b.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.left_clicker_b.Location = new System.Drawing.Point(181, 85);
+            this.left_clicker_b.Location = new System.Drawing.Point(34, 111);
             this.left_clicker_b.Name = "left_clicker_b";
-            this.left_clicker_b.Size = new System.Drawing.Size(212, 31);
+            this.left_clicker_b.Size = new System.Drawing.Size(191, 31);
             this.left_clicker_b.TabIndex = 0;
+            this.left_clicker_b.TabStop = false;
             this.left_clicker_b.Text = "DISABLED";
             this.left_clicker_b.UseVisualStyleBackColor = false;
             this.left_clicker_b.Click += new System.EventHandler(this.left_clicker_b_click);
@@ -109,6 +112,7 @@
             this.minimize_b.Name = "minimize_b";
             this.minimize_b.Size = new System.Drawing.Size(15, 15);
             this.minimize_b.TabIndex = 1;
+            this.minimize_b.TabStop = false;
             this.minimize_b.UseVisualStyleBackColor = false;
             this.minimize_b.Click += new System.EventHandler(this.minimize_b_Click);
             // 
@@ -122,66 +126,74 @@
             this.exit_b.Name = "exit_b";
             this.exit_b.Size = new System.Drawing.Size(15, 15);
             this.exit_b.TabIndex = 0;
+            this.exit_b.TabStop = false;
             this.exit_b.UseVisualStyleBackColor = false;
             this.exit_b.Click += new System.EventHandler(this.exit_b_Click);
             // 
             // panel_left
             // 
             this.panel_left.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel_left.Controls.Add(this.max_random_left);
-            this.panel_left.Controls.Add(this.min_random_left);
-            this.panel_left.Controls.Add(this.left_type);
-            this.panel_left.Controls.Add(this.title_panel_left);
-            this.panel_left.Controls.Add(this.cps_input_left);
+            this.panel_left.Controls.Add(this.left_toggle);
+            this.panel_left.Controls.Add(this.display_cps_left);
             this.panel_left.Controls.Add(this.cps_left);
+            this.panel_left.Controls.Add(this.bind_left);
+            this.panel_left.Controls.Add(this.title_panel_left);
+            this.panel_left.Controls.Add(this.left_cps_trackBar);
             this.panel_left.Controls.Add(this.left_clicker_b);
             this.panel_left.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.panel_left.Location = new System.Drawing.Point(19, 54);
             this.panel_left.Name = "panel_left";
-            this.panel_left.Size = new System.Drawing.Size(638, 223);
+            this.panel_left.Size = new System.Drawing.Size(638, 175);
             this.panel_left.TabIndex = 3;
             // 
-            // max_random_left
+            // left_toggle
             // 
-            this.max_random_left.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.max_random_left.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.5F);
-            this.max_random_left.Location = new System.Drawing.Point(290, 136);
-            this.max_random_left.MaxLength = 3;
-            this.max_random_left.Name = "max_random_left";
-            this.max_random_left.Size = new System.Drawing.Size(103, 31);
-            this.max_random_left.TabIndex = 10;
-            this.max_random_left.Text = "13";
-            this.max_random_left.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.max_random_left.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.max_random_left_KeyPress);
-            this.max_random_left.Leave += new System.EventHandler(this.max_random_left_Leave);
+            this.left_toggle.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.left_toggle.FlatAppearance.BorderSize = 0;
+            this.left_toggle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.left_toggle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.left_toggle.Location = new System.Drawing.Point(231, 111);
+            this.left_toggle.Name = "left_toggle";
+            this.left_toggle.Size = new System.Drawing.Size(174, 31);
+            this.left_toggle.TabIndex = 15;
+            this.left_toggle.TabStop = false;
+            this.left_toggle.Text = "HOLD";
+            this.left_toggle.UseVisualStyleBackColor = false;
+            this.left_toggle.Click += new System.EventHandler(this.left_toggle_Click);
             // 
-            // min_random_left
+            // display_cps_left
             // 
-            this.min_random_left.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.min_random_left.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.5F);
-            this.min_random_left.Location = new System.Drawing.Point(181, 136);
-            this.min_random_left.MaxLength = 3;
-            this.min_random_left.Name = "min_random_left";
-            this.min_random_left.Size = new System.Drawing.Size(103, 31);
-            this.min_random_left.TabIndex = 9;
-            this.min_random_left.Text = "9";
-            this.min_random_left.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.min_random_left.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.min_random_left_KeyPress);
-            this.min_random_left.Leave += new System.EventHandler(this.min_random_left_Leave);
+            this.display_cps_left.AutoSize = true;
+            this.display_cps_left.Location = new System.Drawing.Point(580, 59);
+            this.display_cps_left.Name = "display_cps_left";
+            this.display_cps_left.Size = new System.Drawing.Size(30, 22);
+            this.display_cps_left.TabIndex = 14;
+            this.display_cps_left.Text = "10";
             // 
-            // left_type
+            // cps_left
             // 
-            this.left_type.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.left_type.FlatAppearance.BorderSize = 0;
-            this.left_type.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.left_type.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.left_type.Location = new System.Drawing.Point(29, 136);
-            this.left_type.Name = "left_type";
-            this.left_type.Size = new System.Drawing.Size(148, 31);
-            this.left_type.TabIndex = 8;
-            this.left_type.Text = "CONST";
-            this.left_type.UseVisualStyleBackColor = false;
-            this.left_type.Click += new System.EventHandler(this.left_type_Click);
+            this.cps_left.AutoSize = true;
+            this.cps_left.Location = new System.Drawing.Point(30, 62);
+            this.cps_left.Name = "cps_left";
+            this.cps_left.Size = new System.Drawing.Size(210, 22);
+            this.cps_left.TabIndex = 13;
+            this.cps_left.Text = "CPS - Clicks Per Second";
+            // 
+            // bind_left
+            // 
+            this.bind_left.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.bind_left.FlatAppearance.BorderSize = 0;
+            this.bind_left.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bind_left.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.bind_left.Location = new System.Drawing.Point(411, 111);
+            this.bind_left.Name = "bind_left";
+            this.bind_left.Size = new System.Drawing.Size(191, 31);
+            this.bind_left.TabIndex = 11;
+            this.bind_left.TabStop = false;
+            this.bind_left.Text = "BIND: R+LMB";
+            this.bind_left.UseVisualStyleBackColor = false;
+            this.bind_left.Click += new System.EventHandler(this.bind_left_Click);
+            this.bind_left.KeyDown += new System.Windows.Forms.KeyEventHandler(this.bind_left_KeyDown);
             // 
             // title_panel_left
             // 
@@ -194,91 +206,92 @@
             // 
             // title_left
             // 
-            this.title_left.AutoSize = true;
             this.title_left.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.title_left.Location = new System.Drawing.Point(3, 4);
             this.title_left.Name = "title_left";
-            this.title_left.Size = new System.Drawing.Size(128, 31);
+            this.title_left.Size = new System.Drawing.Size(147, 31);
             this.title_left.TabIndex = 4;
             this.title_left.Text = "LEFT MB";
             // 
-            // cps_input_left
+            // left_cps_trackBar
             // 
-            this.cps_input_left.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cps_input_left.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.5F);
-            this.cps_input_left.Location = new System.Drawing.Point(73, 85);
-            this.cps_input_left.MaxLength = 3;
-            this.cps_input_left.Name = "cps_input_left";
-            this.cps_input_left.Size = new System.Drawing.Size(103, 31);
-            this.cps_input_left.TabIndex = 3;
-            this.cps_input_left.Text = "10";
-            this.cps_input_left.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.cps_input_left.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cps_input_left_KeyPress);
-            this.cps_input_left.Leave += new System.EventHandler(this.cps_input_left_Leave);
-            // 
-            // cps_left
-            // 
-            this.cps_left.AutoSize = true;
-            this.cps_left.Font = new System.Drawing.Font("Yu Gothic UI", 17F, System.Drawing.FontStyle.Bold);
-            this.cps_left.Location = new System.Drawing.Point(23, 85);
-            this.cps_left.Name = "cps_left";
-            this.cps_left.Size = new System.Drawing.Size(54, 31);
-            this.cps_left.TabIndex = 2;
-            this.cps_left.Text = "CPS";
+            this.left_cps_trackBar.AutoSize = false;
+            this.left_cps_trackBar.Location = new System.Drawing.Point(25, 81);
+            this.left_cps_trackBar.Maximum = 50;
+            this.left_cps_trackBar.Minimum = 1;
+            this.left_cps_trackBar.Name = "left_cps_trackBar";
+            this.left_cps_trackBar.Size = new System.Drawing.Size(585, 24);
+            this.left_cps_trackBar.TabIndex = 0;
+            this.left_cps_trackBar.TabStop = false;
+            this.left_cps_trackBar.TickFrequency = 0;
+            this.left_cps_trackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.left_cps_trackBar.Value = 10;
+            this.left_cps_trackBar.Scroll += new System.EventHandler(this.left_cps_trackBar_Scroll);
             // 
             // panel_right
             // 
             this.panel_right.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel_right.Controls.Add(this.max_random_right);
-            this.panel_right.Controls.Add(this.min_random_right);
-            this.panel_right.Controls.Add(this.right_type);
-            this.panel_right.Controls.Add(this.title_panel_right);
-            this.panel_right.Controls.Add(this.cps_input_right);
+            this.panel_right.Controls.Add(this.right_toggle);
+            this.panel_right.Controls.Add(this.display_cps_right);
             this.panel_right.Controls.Add(this.cps_right);
+            this.panel_right.Controls.Add(this.right_cps_trackBar);
+            this.panel_right.Controls.Add(this.bind_right);
+            this.panel_right.Controls.Add(this.title_panel_right);
             this.panel_right.Controls.Add(this.right_clicker_b);
             this.panel_right.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.panel_right.Location = new System.Drawing.Point(17, 295);
+            this.panel_right.Location = new System.Drawing.Point(19, 244);
             this.panel_right.Name = "panel_right";
-            this.panel_right.Size = new System.Drawing.Size(638, 223);
+            this.panel_right.Size = new System.Drawing.Size(638, 175);
             this.panel_right.TabIndex = 11;
             // 
-            // max_random_right
+            // display_cps_right
             // 
-            this.max_random_right.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.max_random_right.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.5F);
-            this.max_random_right.Location = new System.Drawing.Point(292, 135);
-            this.max_random_right.MaxLength = 3;
-            this.max_random_right.Name = "max_random_right";
-            this.max_random_right.Size = new System.Drawing.Size(103, 31);
-            this.max_random_right.TabIndex = 10;
-            this.max_random_right.Text = "36";
-            this.max_random_right.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.display_cps_right.AutoSize = true;
+            this.display_cps_right.Location = new System.Drawing.Point(580, 59);
+            this.display_cps_right.Name = "display_cps_right";
+            this.display_cps_right.Size = new System.Drawing.Size(30, 22);
+            this.display_cps_right.TabIndex = 15;
+            this.display_cps_right.Text = "30";
             // 
-            // min_random_right
+            // cps_right
             // 
-            this.min_random_right.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.min_random_right.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.5F);
-            this.min_random_right.Location = new System.Drawing.Point(183, 135);
-            this.min_random_right.MaxLength = 3;
-            this.min_random_right.Name = "min_random_right";
-            this.min_random_right.Size = new System.Drawing.Size(103, 31);
-            this.min_random_right.TabIndex = 9;
-            this.min_random_right.Text = "25";
-            this.min_random_right.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.cps_right.AutoSize = true;
+            this.cps_right.Location = new System.Drawing.Point(30, 62);
+            this.cps_right.Name = "cps_right";
+            this.cps_right.Size = new System.Drawing.Size(210, 22);
+            this.cps_right.TabIndex = 16;
+            this.cps_right.Text = "CPS - Clicks Per Second";
             // 
-            // right_type
+            // right_cps_trackBar
             // 
-            this.right_type.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.right_type.FlatAppearance.BorderSize = 0;
-            this.right_type.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.right_type.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.right_type.Location = new System.Drawing.Point(31, 135);
-            this.right_type.Name = "right_type";
-            this.right_type.Size = new System.Drawing.Size(148, 31);
-            this.right_type.TabIndex = 8;
-            this.right_type.Text = "CONST";
-            this.right_type.UseVisualStyleBackColor = false;
-            this.right_type.Click += new System.EventHandler(this.right_type_Click);
+            this.right_cps_trackBar.AutoSize = false;
+            this.right_cps_trackBar.Location = new System.Drawing.Point(25, 81);
+            this.right_cps_trackBar.Maximum = 50;
+            this.right_cps_trackBar.Minimum = 1;
+            this.right_cps_trackBar.Name = "right_cps_trackBar";
+            this.right_cps_trackBar.Size = new System.Drawing.Size(585, 24);
+            this.right_cps_trackBar.TabIndex = 15;
+            this.right_cps_trackBar.TabStop = false;
+            this.right_cps_trackBar.TickFrequency = 0;
+            this.right_cps_trackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.right_cps_trackBar.Value = 30;
+            this.right_cps_trackBar.Scroll += new System.EventHandler(this.right_cps_trackBar_Scroll);
+            // 
+            // bind_right
+            // 
+            this.bind_right.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.bind_right.FlatAppearance.BorderSize = 0;
+            this.bind_right.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bind_right.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.bind_right.Location = new System.Drawing.Point(411, 111);
+            this.bind_right.Name = "bind_right";
+            this.bind_right.Size = new System.Drawing.Size(193, 31);
+            this.bind_right.TabIndex = 12;
+            this.bind_right.TabStop = false;
+            this.bind_right.Text = "BIND: F+LMB";
+            this.bind_right.UseVisualStyleBackColor = false;
+            this.bind_right.Click += new System.EventHandler(this.bind_right_Click);
+            this.bind_right.KeyDown += new System.Windows.Forms.KeyEventHandler(this.bind_right_KeyDown);
             // 
             // title_panel_right
             // 
@@ -291,7 +304,6 @@
             // 
             // title_right
             // 
-            this.title_right.AutoSize = true;
             this.title_right.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.title_right.Location = new System.Drawing.Point(3, 4);
             this.title_right.Name = "title_right";
@@ -299,38 +311,17 @@
             this.title_right.TabIndex = 4;
             this.title_right.Text = "RIGHT MB";
             // 
-            // cps_input_right
-            // 
-            this.cps_input_right.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cps_input_right.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.5F);
-            this.cps_input_right.Location = new System.Drawing.Point(75, 84);
-            this.cps_input_right.MaxLength = 3;
-            this.cps_input_right.Name = "cps_input_right";
-            this.cps_input_right.Size = new System.Drawing.Size(103, 31);
-            this.cps_input_right.TabIndex = 3;
-            this.cps_input_right.Text = "30";
-            this.cps_input_right.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // cps_right
-            // 
-            this.cps_right.AutoSize = true;
-            this.cps_right.Font = new System.Drawing.Font("Yu Gothic UI", 17F, System.Drawing.FontStyle.Bold);
-            this.cps_right.Location = new System.Drawing.Point(25, 84);
-            this.cps_right.Name = "cps_right";
-            this.cps_right.Size = new System.Drawing.Size(54, 31);
-            this.cps_right.TabIndex = 2;
-            this.cps_right.Text = "CPS";
-            // 
             // right_clicker_b
             // 
             this.right_clicker_b.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.right_clicker_b.FlatAppearance.BorderSize = 0;
             this.right_clicker_b.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.right_clicker_b.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.right_clicker_b.Location = new System.Drawing.Point(183, 84);
+            this.right_clicker_b.Location = new System.Drawing.Point(34, 111);
             this.right_clicker_b.Name = "right_clicker_b";
-            this.right_clicker_b.Size = new System.Drawing.Size(212, 31);
+            this.right_clicker_b.Size = new System.Drawing.Size(191, 31);
             this.right_clicker_b.TabIndex = 0;
+            this.right_clicker_b.TabStop = false;
             this.right_clicker_b.Text = "DISABLED";
             this.right_clicker_b.UseVisualStyleBackColor = false;
             this.right_clicker_b.Click += new System.EventHandler(this.right_clicker_b_Click_1);
@@ -339,11 +330,26 @@
             // 
             this.RightClicker.Tick += new System.EventHandler(this.RightClicker_Tick);
             // 
+            // right_toggle
+            // 
+            this.right_toggle.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.right_toggle.FlatAppearance.BorderSize = 0;
+            this.right_toggle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.right_toggle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.right_toggle.Location = new System.Drawing.Point(231, 111);
+            this.right_toggle.Name = "right_toggle";
+            this.right_toggle.Size = new System.Drawing.Size(174, 31);
+            this.right_toggle.TabIndex = 16;
+            this.right_toggle.TabStop = false;
+            this.right_toggle.Text = "HOLD";
+            this.right_toggle.UseVisualStyleBackColor = false;
+            this.right_toggle.Click += new System.EventHandler(this.right_toggle_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(676, 542);
+            this.ClientSize = new System.Drawing.Size(676, 438);
             this.Controls.Add(this.panel_right);
             this.Controls.Add(this.panel_left);
             this.Controls.Add(this.bar);
@@ -355,11 +361,11 @@
             this.panel_left.ResumeLayout(false);
             this.panel_left.PerformLayout();
             this.title_panel_left.ResumeLayout(false);
-            this.title_panel_left.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.left_cps_trackBar)).EndInit();
             this.panel_right.ResumeLayout(false);
             this.panel_right.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.right_cps_trackBar)).EndInit();
             this.title_panel_right.ResumeLayout(false);
-            this.title_panel_right.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -373,23 +379,23 @@
         private System.Windows.Forms.Button exit_b;
         private System.Windows.Forms.Label app_title;
         private System.Windows.Forms.Panel panel_left;
-        private System.Windows.Forms.Label cps_left;
-        private System.Windows.Forms.TextBox cps_input_left;
         private System.Windows.Forms.Label title_left;
         private System.Windows.Forms.Panel title_panel_left;
-        private System.Windows.Forms.Button left_type;
-        private System.Windows.Forms.TextBox max_random_left;
-        private System.Windows.Forms.TextBox min_random_left;
         private System.Windows.Forms.Panel panel_right;
-        private System.Windows.Forms.TextBox max_random_right;
-        private System.Windows.Forms.TextBox min_random_right;
-        private System.Windows.Forms.Button right_type;
         private System.Windows.Forms.Panel title_panel_right;
         private System.Windows.Forms.Label title_right;
-        private System.Windows.Forms.TextBox cps_input_right;
-        private System.Windows.Forms.Label cps_right;
         private System.Windows.Forms.Button right_clicker_b;
         private System.Windows.Forms.Timer RightClicker;
+        private System.Windows.Forms.Button bind_left;
+        private System.Windows.Forms.Button bind_right;
+        private System.Windows.Forms.TrackBar left_cps_trackBar;
+        private System.Windows.Forms.Label cps_left;
+        private System.Windows.Forms.Label display_cps_left;
+        private System.Windows.Forms.Label cps_right;
+        private System.Windows.Forms.TrackBar right_cps_trackBar;
+        private System.Windows.Forms.Label display_cps_right;
+        private System.Windows.Forms.Button left_toggle;
+        private System.Windows.Forms.Button right_toggle;
     }
 }
 
