@@ -215,7 +215,7 @@ namespace KQClicker
             left_clicker_b.BackColor = Color.FromArgb(140, 24, 24);
             bind_left.BackColor = Color.FromArgb(29, 143, 29);
             display_cps_left.ForeColor = Color.FromArgb(140, 24, 24);
-            left_toggle.BackColor = Color.FromArgb(140, 24, 24);
+            left_toggle.BackColor = Color.FromArgb(29, 143, 29);
 
             //right mb clicker panel//
             right_clicker_b.ForeColor = Color.FromArgb(24, 24, 24);
@@ -228,7 +228,7 @@ namespace KQClicker
             bind_right.ForeColor = Color.FromArgb(24, 24, 24);
             right_clicker_b.BackColor = Color.FromArgb(140, 24, 24);
             bind_right.BackColor = Color.FromArgb(29, 143, 29);
-            right_toggle.BackColor = Color.FromArgb(140, 24, 24);
+            right_toggle.BackColor = Color.FromArgb(29, 143, 29);
 
             //app background//
             this.BackColor = Color.FromArgb(17, 17, 17);
