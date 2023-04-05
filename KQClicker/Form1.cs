@@ -62,11 +62,11 @@ namespace KQClicker
             //changing button style//
             if(left_clicker_on == true)
             {
-                left_clicker_b.BackColor = Color.FromArgb(29, 143, 29);
+                left_clicker_b.BackColor = Color.FromArgb(4, 27, 41);
                 left_clicker_b.Text = "ENABLED";
             } else
             {
-                left_clicker_b.BackColor = Color.FromArgb(140, 24, 24);
+                left_clicker_b.BackColor = Color.FromArgb(0, 20, 45);
                 left_clicker_b.Text = "DISABLED";
             }
         }
@@ -128,12 +128,12 @@ namespace KQClicker
             //changing button style//
             if (right_clicker_on == true)
             {
-                right_clicker_b.BackColor = Color.FromArgb(29, 143, 29);
+                right_clicker_b.BackColor = Color.FromArgb(4, 27, 41);
                 right_clicker_b.Text = "ENABLED";
             }
             else
             {
-                right_clicker_b.BackColor = Color.FromArgb(140, 24, 24);
+                right_clicker_b.BackColor = Color.FromArgb(0, 20, 45);
                 right_clicker_b.Text = "DISABLED";
             }
         }
@@ -199,39 +199,53 @@ namespace KQClicker
             loadData();
 
             //window bar//
-            bar.BackColor = Color.FromArgb(37, 37, 37);
-            app_title.ForeColor = Color.FromArgb(140, 24, 24);
+            bar.BackColor = Color.FromArgb(0, 12, 20);
+            app_title.ForeColor = Color.FromArgb(36, 112, 171);
             exit_b.BackColor = Color.Red;
             minimize_b.BackColor = Color.Orange;
 
             //left mb clicker panel//
-            left_clicker_b.ForeColor = Color.FromArgb(24, 24, 24);
-            left_clicker_b.BackColor = Color.Red;
-            panel_left.BackColor = Color.FromArgb(24, 24, 24);
-            cps_left.ForeColor = Color.FromArgb(140, 24, 24);
-            title_left.ForeColor = Color.FromArgb(140, 24, 24);
-            title_panel_left.BackColor = Color.FromArgb(33, 33, 33);
-            bind_left.ForeColor = Color.FromArgb(24, 24, 24);
-            left_clicker_b.BackColor = Color.FromArgb(140, 24, 24);
-            bind_left.BackColor = Color.FromArgb(29, 143, 29);
-            display_cps_left.ForeColor = Color.FromArgb(140, 24, 24);
-            left_toggle.BackColor = Color.FromArgb(29, 143, 29);
+            //left title bar//
+            title_left.ForeColor = Color.FromArgb(36, 112, 171);
+            title_panel_left.BackColor = Color.FromArgb(0, 12, 20);
+            //left clicker panel
+            panel_left.BackColor = Color.FromArgb(0, 8, 13);
+            //turn on off left clicker
+            left_clicker_b.ForeColor = Color.FromArgb(36, 112, 171);
+            left_clicker_b.BackColor = Color.FromArgb(0, 20, 45);
+            //cps text left clicker
+            cps_left.ForeColor = Color.FromArgb(36, 112, 171);
+            //bind button left clicker
+            bind_left.ForeColor = Color.FromArgb(36, 112, 171);
+            bind_left.BackColor = Color.FromArgb(4, 27, 41);
+            //display cps text left clicker
+            display_cps_left.ForeColor = Color.FromArgb(36, 112, 171);
+            //toggle hold button
+            left_toggle.BackColor = Color.FromArgb(4, 27, 41);
+            left_toggle.ForeColor = Color.FromArgb(36, 112, 171);
 
             //right mb clicker panel//
-            right_clicker_b.ForeColor = Color.FromArgb(24, 24, 24);
-            right_clicker_b.BackColor = Color.Red;
-            panel_right.BackColor = Color.FromArgb(24, 24, 24);
-            cps_right.ForeColor = Color.FromArgb(140, 24, 24);
-            display_cps_right.ForeColor = Color.FromArgb(140, 24, 24);
-            title_right.ForeColor = Color.FromArgb(140, 24, 24);
-            title_panel_right.BackColor = Color.FromArgb(33, 33, 33);
-            bind_right.ForeColor = Color.FromArgb(24, 24, 24);
-            right_clicker_b.BackColor = Color.FromArgb(140, 24, 24);
-            bind_right.BackColor = Color.FromArgb(29, 143, 29);
-            right_toggle.BackColor = Color.FromArgb(29, 143, 29);
+            //right title bar
+            title_right.ForeColor = Color.FromArgb(36, 112, 171);
+            title_panel_right.BackColor = Color.FromArgb(0, 12, 20);
+            //right clicker panel
+            panel_right.BackColor = Color.FromArgb(0, 8, 13);
+            //turn on off right clicker 
+            right_clicker_b.ForeColor = Color.FromArgb(36, 112, 171);
+            right_clicker_b.BackColor = Color.FromArgb(0, 20, 45);
+            //cps text right clicker
+            cps_right.ForeColor = Color.FromArgb(36, 112, 171);
+            //bind button right clicker
+            bind_right.ForeColor = Color.FromArgb(36, 112, 171);
+            bind_right.BackColor = Color.FromArgb(4, 27, 41);
+            //display cps text right button
+            display_cps_right.ForeColor = Color.FromArgb(36, 112, 171);
+            //toggle hold button
+            right_toggle.BackColor = Color.FromArgb(4, 27, 41);
+            right_toggle.ForeColor = Color.FromArgb(36, 112, 171);
 
             //app background//
-            this.BackColor = Color.FromArgb(17, 17, 17);
+            this.BackColor = Color.FromArgb(0, 6, 10);
 
             //start left mb clicker//
             LeftClicker.Enabled = true;
@@ -260,8 +274,16 @@ namespace KQClicker
         private void bind_left_Click(object sender, EventArgs e)
         {
             waiting_left_for_input = !waiting_left_for_input;
-            if(waiting_left_for_input == true) bind_left.BackColor = Color.FromArgb(140, 24, 24);
-            else bind_left.BackColor = Color.FromArgb(29, 143, 29);
+            if (waiting_left_for_input == true)
+            {
+                bind_left.BackColor = Color.FromArgb(0, 20, 45);
+                bind_left.Text = "...+LMB"; 
+            }
+            else
+            {
+                bind_left.BackColor = Color.FromArgb(4, 27, 41);
+                bind_left.Text = "BIND: " + left_bind_key.ToString() + "+LMB";
+            }
         }
 
         private void bind_left_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
@@ -272,7 +294,7 @@ namespace KQClicker
                 Settings.Default.left_key_bind = left_bind_key.ToString();
                 Settings.Default.Save();
                 bind_left.Text = "BIND: " + left_bind_key.ToString() + "+LMB"; 
-                bind_left.BackColor = Color.FromArgb(29, 143, 29);
+                bind_left.BackColor = Color.FromArgb(4, 27, 41);
                 waiting_left_for_input = false;
             }
         }
@@ -282,8 +304,16 @@ namespace KQClicker
         private void bind_right_Click(object sender, EventArgs e)
         {
             waiting_right_for_input = !waiting_right_for_input;
-            if (waiting_right_for_input == true) bind_right.BackColor = Color.FromArgb(140, 24, 24);
-            else bind_right.BackColor = Color.FromArgb(29, 143, 29);
+            if (waiting_right_for_input == true)
+            {
+                bind_right.BackColor = Color.FromArgb(0, 20, 45);
+                bind_right.Text = "...+LMB";
+            }
+            else
+            {
+                bind_right.BackColor = Color.FromArgb(4, 27, 41);
+                bind_left.Text = "BIND: " + left_bind_key.ToString() + "+LMB";
+            }
         }
 
         private void bind_right_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
@@ -294,7 +324,7 @@ namespace KQClicker
                 Settings.Default.right_key_bind = right_bind_key.ToString();
                 Settings.Default.Save();
                 bind_right.Text = "BIND: " + right_bind_key.ToString() + "+LMB";
-                bind_right.BackColor = Color.FromArgb(29, 143, 29);
+                bind_right.BackColor = Color.FromArgb(4, 27, 41);
                 waiting_right_for_input = false;
             }
         }
