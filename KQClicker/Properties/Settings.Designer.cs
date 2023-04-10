@@ -94,5 +94,53 @@ namespace KQClicker.Properties {
                 this["right_toggle"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool auto_on_left {
+            get {
+                return ((bool)(this["auto_on_left"]));
+            }
+            set {
+                this["auto_on_left"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int left_delay {
+            get {
+                return ((int)(this["left_delay"]));
+            }
+            set {
+                this["left_delay"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int right_delay {
+            get {
+                return ((int)(this["right_delay"]));
+            }
+            set {
+                this["right_delay"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool auto_on_right {
+            get {
+                return ((bool)(this["auto_on_right"]));
+            }
+            set {
+                this["auto_on_right"] = value;
+            }
+        }
     }
 }
