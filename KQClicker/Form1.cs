@@ -29,7 +29,7 @@ namespace KQClicker
         public bool left_clicker_working = false;
         //TO SAVE//
         public Keys keybind_left = Keys.R;
-        public bool left_clicker_toggle = false;
+        public bool left_clicker_toggle = true;
         public int cps_left = 10;
         public bool auto_on_left = false;
 
@@ -38,7 +38,7 @@ namespace KQClicker
         public bool right_clicker_working = false;
         //TO SAVE//
         public Keys keybind_right = Keys.F;
-        public bool right_clicker_toggle = false;
+        public bool right_clicker_toggle = true;
         public int cps_right = 10;
         public bool auto_on_right = false;
 
@@ -46,13 +46,13 @@ namespace KQClicker
         {
             //LMB CLICKER//
             public Keys keybind_left { get; set; } = Keys.R;
-            public bool left_clicker_toggle { get; set; } = false;
+            public bool left_clicker_toggle { get; set; } = true;
             public int cps_left { get; set; } = 10;
             public int left_delay { get; set; } = 20;
             public bool auto_on_left { get; set; } = false;
             //RBM CLICKER//
             public Keys keybind_right { get; set; } = Keys.F;
-            public bool right_clicker_toggle { get; set; } = false;
+            public bool right_clicker_toggle { get; set; } = true;
             public int cps_right { get; set; } = 10;
             public int right_delay { get; set; } = 20;
             public bool auto_on_right { get; set; } = false;
@@ -257,6 +257,8 @@ namespace KQClicker
             auto_turnonoff_clicker_b_r.ForeColor = Color.FromArgb(36, 112, 171);
             auto_turnonoff_clicker_b_l.ForeColor = Color.FromArgb(36, 112, 171);
             advanced_settings_title_1.ForeColor = Color.FromArgb(36, 112, 171);
+            auto_turnonoff_clicker_b_l.BackColor = Color.FromArgb(0, 20, 45);
+            auto_turnonoff_clicker_b_r.BackColor = Color.FromArgb(0, 20, 45);
 
             //APP BACKGROUND//
             this.BackColor = Color.FromArgb(0, 6, 10);
@@ -307,8 +309,26 @@ namespace KQClicker
                 if (right_clicker_toggle == true) right_toggle.Text = "TOGGLE";
                 else right_toggle.Text = "HOLD";
 
-                if (auto_on_left == true) left_clicker_on = true;
-                if (auto_on_right == true) right_clicker_on = true;
+                if (auto_on_left == true)
+                {
+                    left_clicker_on = true;
+                    auto_turnonoff_clicker_b_l.Text = "ENABLED";
+                    auto_turnonoff_clicker_b_l.BackColor = Color.FromArgb(4, 27, 41);
+                } else
+                {
+                    auto_turnonoff_clicker_b_l.Text = "DISABLED";
+                    auto_turnonoff_clicker_b_l.BackColor = Color.FromArgb(0, 20, 45);
+                }
+                if (auto_on_right == true)
+                {
+                    right_clicker_on = true;
+                    auto_turnonoff_clicker_b_r.Text = "ENABLED";
+                    auto_turnonoff_clicker_b_r.BackColor = Color.FromArgb(4, 27, 41);
+                } else
+                {
+                    auto_turnonoff_clicker_b_r.Text = "DISABLED";
+                    auto_turnonoff_clicker_b_r.BackColor = Color.FromArgb(0, 20, 45);
+                }
                 if (left_clicker_on == true)
                 {
                     left_clicker_b.BackColor = Color.FromArgb(4, 27, 41);
@@ -328,26 +348,6 @@ namespace KQClicker
                 {
                     right_clicker_b.BackColor = Color.FromArgb(0, 20, 45);
                     right_clicker_b.Text = "DISABLED";
-                }
-                if (auto_on_right == true)
-                {
-                    auto_turnonoff_clicker_b_r.Text = "ENABLED";
-                    auto_turnonoff_clicker_b_r.BackColor = Color.FromArgb(4, 27, 41);
-                }
-                else
-                {
-                    auto_turnonoff_clicker_b_r.Text = "DISABLED";
-                    auto_turnonoff_clicker_b_r.BackColor = Color.FromArgb(0, 20, 45);
-                }
-                if (auto_on_left == true)
-                {
-                    auto_turnonoff_clicker_b_l.Text = "ENABLED";
-                    auto_turnonoff_clicker_b_l.BackColor = Color.FromArgb(4, 27, 41);
-                }
-                else
-                {
-                    auto_turnonoff_clicker_b_l.Text = "DISABLED";
-                    auto_turnonoff_clicker_b_l.BackColor = Color.FromArgb(0, 20, 45);
                 }
             }
             catch (Exception ex) { return; }

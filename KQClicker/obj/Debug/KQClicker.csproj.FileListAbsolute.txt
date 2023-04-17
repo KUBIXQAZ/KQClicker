@@ -23,3 +23,7 @@ D:\PROGRAMMING-PROJECTS\csharp-apps\KQClicker\KQClicker\obj\Debug\KQClicker.pdb
 D:\PROGRAMMING-PROJECTS\csharp-apps\KQClicker\KQClicker\bin\Debug\Newtonsoft.Json.dll
 D:\PROGRAMMING-PROJECTS\csharp-apps\KQClicker\KQClicker\bin\Debug\Newtonsoft.Json.xml
 D:\PROGRAMMING-PROJECTS\csharp-apps\KQClicker\KQClicker\obj\Debug\KQClicker.csproj.CopyComplete
+D:\PROGRAMMING-PROJECTS\csharp-apps\KQClicker\KQClicker\bin\Debug\KQClicker.exe.manifest
+D:\PROGRAMMING-PROJECTS\csharp-apps\KQClicker\KQClicker\bin\Debug\KQClicker.application
+D:\PROGRAMMING-PROJECTS\csharp-apps\KQClicker\KQClicker\obj\Debug\KQClicker.exe.manifest
+D:\PROGRAMMING-PROJECTS\csharp-apps\KQClicker\KQClicker\obj\Debug\KQClicker.application
