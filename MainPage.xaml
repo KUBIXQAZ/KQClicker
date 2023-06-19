@@ -1,0 +1,220 @@
+﻿<Page x:Class="KQClicker.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:KQClicker"
+      mc:Ignorable="d" 
+      d:DesignHeight="437" d:DesignWidth="676"
+      Title="MainPage">
+    <Grid>
+        <StackPanel Grid.Row="1"
+                    Background="#00060a">
+            <StackPanel Height="175"
+                        Width="638"
+                        Margin="0 20 0 0">
+                <StackPanel Height="39"
+                            Width="638"
+                            VerticalAlignment="Top"
+                            Background="#000c14">
+                    <TextBlock Foreground="#2470ab"
+                               FontSize="30"
+                               Padding="0 0 0 0"
+                               Height="39"
+                               VerticalAlignment="Center" 
+                               HorizontalAlignment="Left"
+                               Margin="12 0 0 0"
+                               FontFamily="Fonts/#Dosis"
+                               Text="LEFT MB">
+                    </TextBlock>
+                </StackPanel>
+                <StackPanel Height="136"
+                            Width="638"
+                            VerticalAlignment="Top"
+                            Background="#00080d"
+                            Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Foreground="#2470ab"
+                                   FontSize="23"
+                                   Padding="0 0 0 0"
+                                   Height="auto"
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Left"
+                                   Margin="21 20 0 0"
+                                   FontFamily="Fonts/#Dosis"
+                                   Text="CPS - Clicks Per Second">
+                        </TextBlock>
+                        <TextBlock Foreground="#2470ab"
+                                   FontSize="23"
+                                   Padding="0 0 0 0"
+                                   Height="auto"
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Left"
+                                   Margin="369 20 0 0"
+                                   FontFamily="Fonts/#Dosis"
+                                   x:Name="display_cps_left"
+                                   Text="10">
+                        </TextBlock>
+                    </StackPanel>
+                    <Slider Width="605" 
+                            Value="10" 
+                            Minimum="1"
+                            Maximum="50"     
+                            x:Name="leftClicker_slider"
+                            IsSnapToTickEnabled="True"
+                            TickFrequency="1"
+                            ValueChanged="left_cps_slider_scroll">
+                    </Slider>
+                    <StackPanel Orientation="Horizontal" 
+                                Margin="20 10 20 10">
+                        <Button Height="31"
+                                Width="191"
+                                Background="#041b29"
+                                Content="DISABLED"
+                                Foreground="#2470ab"
+                                FontSize="20"
+                                Padding="0 0 0 0"
+                                Click="on_off_leftClicker"
+                                x:Name="on_off_leftClicker_button"
+                                BorderThickness="0"
+                                FontFamily="Fonts/#Dosis">
+                        </Button>
+                        <Button Height="31"
+                                Width="191"
+                                Background="#00142d"
+                                Content="TOGGLE"
+                                Foreground="#2470ab"
+                                FontSize="20"
+                                Padding="0 0 0 0"
+                                Margin="12.5 0 12.5 0"
+                                x:Name="left_toggle_button"
+                                Click="left_toggle_hold_switch"
+                                BorderThickness="0"
+                                FontFamily="Fonts/#Dosis">
+                        </Button>
+                        <Button Height="31"
+                                Width="191"
+                                Background="#00142d"
+                                Content="BIND: R + CTRL"
+                                Foreground="#2470ab"
+                                FontSize="20"
+                                x:Name="bind_left_button"
+                                KeyDown="bind_left_KeyDown"
+                                Click="bind_left"
+                                Padding="0 0 0 0"
+                                BorderThickness="0"
+                                FontFamily="Fonts/#Dosis">
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Height="175"
+                        Width="638"
+                        Margin="0 15 0 0">
+                <StackPanel Height="39"
+                            Width="638"
+                            VerticalAlignment="Top"
+                            Background="#000c14">
+                    <TextBlock Foreground="#2470ab"
+                               FontSize="30"
+                               Padding="0 0 0 0"
+                               Height="39"
+                               VerticalAlignment="Center" 
+                               HorizontalAlignment="Left"
+                               Margin="12 0 0 0"
+                               FontFamily="Fonts/#Dosis"
+                               Text="RIGHT MB">
+                    </TextBlock>
+                </StackPanel>
+                <StackPanel Height="136"
+                            Width="638"
+                            VerticalAlignment="Top"
+                            Background="#00080d"
+                            Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Foreground="#2470ab"
+                                   FontSize="23"
+                                   Padding="0 0 0 0"
+                                   Height="auto"
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Left"
+                                   Margin="21 20 0 0"
+                                   FontFamily="Fonts/#Dosis"
+                                   Text="CPS - Clicks Per Second">
+                        </TextBlock>
+                        <TextBlock Foreground="#2470ab"
+                                   FontSize="23"
+                                   Padding="0 0 0 0"
+                                   Height="auto"
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Left"
+                                   Margin="369 20 0 0"
+                                   FontFamily="Fonts/#Dosis"
+                                   Text="25"
+                                   x:Name="display_cps_right">
+                        </TextBlock>
+                    </StackPanel>
+                    <Slider Width="605" 
+                            Value="25" 
+                            Minimum="1"
+                            Maximum="50"                                      IsSnapToTickEnabled="True"
+                            TickFrequency="1" ValueChanged="right_cps_slider_scroll"
+                            x:Name="rightClicker_slider">
+                    </Slider>
+                    <StackPanel Orientation="Horizontal" 
+                                Margin="20 10 20 10">
+                        <Button Height="31"
+                                Width="191"
+                                Background="#041b29"
+                                Content="DISABLED"
+                                Foreground="#2470ab"
+                                FontSize="20"
+                                Click="on_off_rightClicker"
+                                x:Name="on_off_rightClicker_button"
+                                Padding="0 0 0 0"
+                                BorderThickness="0"
+                                FontFamily="Fonts/#Dosis">
+                        </Button>
+                        <Button Height="31"
+                                Width="191"
+                                Background="#00142d"
+                                Content="TOGGLE"
+                                Foreground="#2470ab"
+                                FontSize="20"
+                                Padding="0 0 0 0"
+                                x:Name="right_toggle_button"
+                                Margin="12.5 0 12.5 0"
+                                BorderThickness="0"
+                                FontFamily="Fonts/#Dosis" Click="Button_Click">
+                        </Button>
+                        <Button Height="31"
+                                Width="191"
+                                Background="#00142d"
+                                Content="BIND: F + CTRL"
+                                Foreground="#2470ab"
+                                FontSize="20"
+                                Padding="0 0 0 0"
+                                x:Name="bind_right_button"
+                                KeyDown="bind_right_KeyDown"
+                                Click="bind_right"
+                                BorderThickness="0"
+                                FontFamily="Fonts/#Dosis">
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <Button Height="31"
+                    Width="638"
+                    Background="#00142d"
+                    Content="SETTINGS"
+                    Foreground="#2470ab"
+                    FontSize="20"
+                    Click="Settings_button"
+                    Padding="0 0 0 0"
+                    Margin="0 10 0 0"
+                    BorderThickness="0"
+                    FontFamily="Fonts/#Dosis">
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>

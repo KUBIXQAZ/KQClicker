@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KQClicker", "KQClicker\KQClicker.csproj", "{C49F21AF-8F03-46AD-B7E6-9F1827E1FE35}"
-EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupKQClicker", "SetupKQClicker\SetupKQClicker.vdproj", "{552BA33A-48BB-4FFF-AC55-4ACBA180EB38}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KQClicker", "KQClicker.csproj", "{5F6680BB-BD89-40E1-B964-846A7E52AF27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,17 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C49F21AF-8F03-46AD-B7E6-9F1827E1FE35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C49F21AF-8F03-46AD-B7E6-9F1827E1FE35}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C49F21AF-8F03-46AD-B7E6-9F1827E1FE35}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C49F21AF-8F03-46AD-B7E6-9F1827E1FE35}.Release|Any CPU.Build.0 = Release|Any CPU
-		{552BA33A-48BB-4FFF-AC55-4ACBA180EB38}.Debug|Any CPU.ActiveCfg = Debug
-		{552BA33A-48BB-4FFF-AC55-4ACBA180EB38}.Release|Any CPU.ActiveCfg = Release
+		{5F6680BB-BD89-40E1-B964-846A7E52AF27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F6680BB-BD89-40E1-B964-846A7E52AF27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F6680BB-BD89-40E1-B964-846A7E52AF27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F6680BB-BD89-40E1-B964-846A7E52AF27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {5B8B81BB-64E6-4449-84DC-FAED7282E965}
+		SolutionGuid = {7DF8E545-29FF-4A93-9F6C-9FCEB8320130}
 	EndGlobalSection
 EndGlobal
