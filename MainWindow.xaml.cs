@@ -15,19 +15,23 @@ namespace KQClicker
         public static bool left_clicker_on = false;
         public static bool right_clicker_on = false;
 
+        public static string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+        public static string myAppFolder = Path.Combine(appDataPath, "KUBIXQAZ/KQClicker");
+        public static string settingsFilePath = Path.Combine(myAppFolder, "settings.json");
+
         public MainWindow()
         {
             InitializeComponent();
 
             try
             {
-                string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                string myAppFolder = Path.Combine(appDataPath, "KQClicker");
-                string settingsFilePath = Path.Combine(myAppFolder, "settings.json");
-                string settingsJson = File.ReadAllText(settingsFilePath);
-                ClickerSettings settings = JsonConvert.DeserializeObject<ClickerSettings>(settingsJson);
+                if(File.Exists(settingsFilePath))
+                {
+                    string settingsJson = File.ReadAllText(settingsFilePath);
+                    ClickerSettings settings = JsonConvert.DeserializeObject<ClickerSettings>(settingsJson);
 
-                MainPage.clickersettings = settings;
+                    MainPage.clickersettings = settings;
+                }
             }
             catch (Exception) { return; }
 
@@ -52,10 +56,6 @@ namespace KQClicker
         private void ClosingApp(object sender, CancelEventArgs e)
         {
             ClickerSettings settings = MainPage.clickersettings;
-
-            string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            string myAppFolder = Path.Combine(appDataPath, "KQClicker");
-            string settingsFilePath = Path.Combine(myAppFolder, "settings.json");
 
             if (!Directory.Exists(myAppFolder))
             {

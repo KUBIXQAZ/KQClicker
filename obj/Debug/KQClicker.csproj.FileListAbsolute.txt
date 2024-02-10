@@ -2,7 +2,6 @@ D:\PROGRAMMING-PROJECTS\csharp-apps\KQClicker[WPF]\KQClicker\bin\Debug\KQClicker
 D:\PROGRAMMING-PROJECTS\csharp-apps\KQClicker[WPF]\KQClicker\bin\Debug\KQClicker.exe
 D:\PROGRAMMING-PROJECTS\csharp-apps\KQClicker[WPF]\KQClicker\bin\Debug\KQClicker.pdb
 D:\PROGRAMMING-PROJECTS\csharp-apps\KQClicker[WPF]\KQClicker\obj\Debug\KQClicker.csproj.AssemblyReference.cache
-D:\PROGRAMMING-PROJECTS\csharp-apps\KQClicker[WPF]\KQClicker\obj\Debug\KQClicker.csproj.SuggestedBindingRedirects.cache
 D:\PROGRAMMING-PROJECTS\csharp-apps\KQClicker[WPF]\KQClicker\obj\Debug\MainWindow.g.cs
 D:\PROGRAMMING-PROJECTS\csharp-apps\KQClicker[WPF]\KQClicker\obj\Debug\App.g.cs
 D:\PROGRAMMING-PROJECTS\csharp-apps\KQClicker[WPF]\KQClicker\obj\Debug\KQClicker_MarkupCompile.cache

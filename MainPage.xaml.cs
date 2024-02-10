@@ -9,7 +9,6 @@ using System.Diagnostics;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using static KQClicker.MainWindow;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace KQClicker
 {
